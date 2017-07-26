@@ -1,11 +1,11 @@
-package com.codexa.demo.datacassandrakafkademo.config;
+package com.codexa.demo.ckc.config;
 
-import com.codexa.demo.datacassandrakafkademo.datagenerator.CoapDataGenerator;
-import com.codexa.demo.datacassandrakafkademo.datagenerator.CoapDataGeneratorImpl;
-import com.codexa.demo.datacassandrakafkademo.tocassandra.CassandraWriter;
-import com.codexa.demo.datacassandrakafkademo.tocassandra.CassandraWriterImpl;
-import com.codexa.demo.datacassandrakafkademo.tokafka.KafkaWriter;
-import com.codexa.demo.datacassandrakafkademo.tokafka.KafkaWriterImpl;
+import com.codexa.demo.ckc.datagenerator.CoapDataGenerator;
+import com.codexa.demo.ckc.datagenerator.CoapDataGeneratorImpl;
+import com.codexa.demo.ckc.tocassandra.CassandraWriter;
+import com.codexa.demo.ckc.tocassandra.CassandraWriterImpl;
+import com.codexa.demo.ckc.tokafka.KafkaWriter;
+import com.codexa.demo.ckc.tokafka.KafkaWriterImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

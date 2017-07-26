@@ -1,4 +1,4 @@
-package com.codexa.demo.datacassandrakafkademo.tokafka;
+package com.codexa.demo.ckc.tokafka;
 
 import org.springframework.stereotype.Service;
 

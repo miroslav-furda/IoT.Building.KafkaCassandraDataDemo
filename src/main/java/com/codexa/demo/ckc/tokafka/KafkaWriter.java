@@ -1,4 +1,4 @@
-package com.codexa.demo.datacassandrakafkademo.tokafka;
+package com.codexa.demo.ckc.tokafka;
 
 /**
  * Created by peter on 26.7.2017.

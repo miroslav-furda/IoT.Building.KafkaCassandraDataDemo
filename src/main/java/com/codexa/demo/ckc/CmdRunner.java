@@ -1,4 +1,4 @@
-package com.codexa.demo.datacassandrakafkademo;
+package com.codexa.demo.ckc;
 
 /**
  * Created by peter on 26.7.2017.

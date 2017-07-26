@@ -1,8 +1,8 @@
-package com.codexa.demo.datacassandrakafkademo;
+package com.codexa.demo.ckc;
 
-import com.codexa.demo.datacassandrakafkademo.datagenerator.CoapDataGenerator;
-import com.codexa.demo.datacassandrakafkademo.tocassandra.CassandraWriter;
-import com.codexa.demo.datacassandrakafkademo.tokafka.KafkaWriter;
+import com.codexa.demo.ckc.datagenerator.CoapDataGenerator;
+import com.codexa.demo.ckc.tocassandra.CassandraWriter;
+import com.codexa.demo.ckc.tokafka.KafkaWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +37,6 @@ public class CmdRunnerImpl implements CmdRunner {
     @Override
     public void writeToCassandra() {
         System.out.println("write to cassandra");
+        cassandraWriter.write();
     }
 }

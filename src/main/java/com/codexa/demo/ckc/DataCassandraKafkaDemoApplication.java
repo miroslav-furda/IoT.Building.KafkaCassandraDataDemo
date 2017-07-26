@@ -1,4 +1,4 @@
-package com.codexa.demo.datacassandrakafkademo;
+package com.codexa.demo.ckc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,7 +21,7 @@ public class DataCassandraKafkaDemoApplication implements CommandLineRunner {
 
 		if (args.length <= 0) {
 			System.out.println("First input argument is required : try (kafka, cassandra, coap) ");
-			System.exit(0);
+			return;
 		}
 
 		String operation = args[0].toLowerCase();
@@ -43,7 +43,6 @@ public class DataCassandraKafkaDemoApplication implements CommandLineRunner {
 			}
 			default : {
 				System.out.println("Wrong input arguments : try (kafka, cassandra, coap) ");
-				System.exit(0);
 			}
 		}
 	}

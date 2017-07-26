@@ -1,4 +1,4 @@
-package com.codexa.demo.datacassandrakafkademo.datagenerator;
+package com.codexa.demo.ckc.datagenerator;
 
 /**
  * Created by peter on 26.7.2017.
