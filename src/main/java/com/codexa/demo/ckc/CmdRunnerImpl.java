@@ -32,6 +32,8 @@ public class CmdRunnerImpl implements CmdRunner {
     @Override
     public void writeToKafka() {
         System.out.println("write to kafka");
+        kafkaWriter.send();
+        //kafkaWriter.receive();
     }
 
     @Override

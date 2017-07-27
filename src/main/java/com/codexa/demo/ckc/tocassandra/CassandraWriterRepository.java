@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CassandraWriterRepository extends CrudRepository<SensorDataEntity, String> {
 
-    @Query("select * from sensor_data_test_3.sensor_data where deviceId=?0") //TODO
+    @Query("select * from sensor_data_test_3.sensor_data where deviceId=?0")
     SensorDataEntity findByDeviceId(String deviceId);
-
 }

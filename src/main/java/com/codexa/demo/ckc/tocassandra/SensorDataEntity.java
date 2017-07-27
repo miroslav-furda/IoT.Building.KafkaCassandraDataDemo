@@ -24,7 +24,7 @@ public class SensorDataEntity implements Comparable {
     private String deviceId;
 
     @Column("timestamp")
-    private String timestamp; // TODO maybe default for cassandra
+    private String timestamp;
 
     @Column("type")
     private String type;
