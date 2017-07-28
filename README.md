@@ -21,24 +21,24 @@ Application that tests performance of architecture for storing sensor data.
 
 - **Cassandra**
 ```shell
-docker run --name darwin-cassandra -td --restart always -p 7000:7000 -p 7001:7001 -p 9042:9042 -p 9160:9160 -p 7199:7199 cassandra:latest
+$ docker run --name darwin-cassandra -td --restart always -p 7000:7000 -p 7001:7001 -p 9042:9042 -p 9160:9160 -p 7199:7199 cassandra:latest
 ```
 
  - **Kafka**
 ```shell
-sudo docker run --name darwin-kafka --restart always -td  -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`192.168.1.137` --env ADVERTISED_PORT=9092 spotify/kafka
+$ sudo docker run --name darwin-kafka --restart always -td  -p 2181:2181 -p 9092:9092 --env ADVERTISED_HOST=`192.168.1.137` --env ADVERTISED_PORT=9092 spotify/kafka
 ```
 
 - **Coap server**
 ```shell
-sudo docker run --name darwin-coap-server --restart always -td -p 5683:5683/udp markushx/coap
+$ sudo docker run --name darwin-coap-server --restart always -td -p 5683:5683/udp markushx/coap
 ```
 
 ### Check prerequisites if working
 
 KAFKA on host
 ```shell
-echo dump | nc localhost 2181 | grep brokers
+$ echo dump | nc localhost 2181 | grep brokers
 ```
 You should see something like 
 ```shell
@@ -48,13 +48,16 @@ You should see something like
 CASSANDRA on host
 
 ```shell
-nc -vz 192.168.1.137 9042 
+$ nc -vz 192.168.1.137 9042 
 ```
 
 CASSANDRA on guest
 ```shell
-cqlsh
-describe cluster
+$ cqlsh
+$ describe cluster
+$ nodetool -h 192.168.1.137 -p 7199 info
+$ nodetool -h 192.168.1.137 -p 7199 status
+$ nodetool -h 192.168.1.137 -p 7199 ring
 ```
 
 ## Cassandra info

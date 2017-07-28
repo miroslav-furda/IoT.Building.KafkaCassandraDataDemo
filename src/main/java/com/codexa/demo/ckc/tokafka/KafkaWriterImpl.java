@@ -1,6 +1,9 @@
 package com.codexa.demo.ckc.tokafka;
 
+import com.codexa.demo.ckc.tocassandra.SensorDataEntity;
+import com.codexa.demo.ckc.util.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
@@ -11,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class KafkaWriterImpl implements KafkaWriter {
 
-    private static String BOOT_TOPIC = "boot.t";
+    @Value("${topic.boot}")
+    private String topic;
 
     @Autowired
     private KafkaSender sender;
@@ -21,7 +25,7 @@ public class KafkaWriterImpl implements KafkaWriter {
 
     @Override
     public void send() {
-        sender.send(BOOT_TOPIC, "Hello Boot! 2");
+        sender.send(topic, Data.getSensorMessage("type-1", "value-1", "deviceId-1"));
         System.out.println("sended");
     }
 

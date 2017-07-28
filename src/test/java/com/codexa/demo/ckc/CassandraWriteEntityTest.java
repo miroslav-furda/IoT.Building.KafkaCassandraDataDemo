@@ -4,6 +4,7 @@ package com.codexa.demo.ckc;
 import com.codexa.demo.ckc.tocassandra.CassandraWriterRepository;
 import com.codexa.demo.ckc.tocassandra.SensorDataEntity;
 
+import com.codexa.demo.ckc.util.Data;
 import com.datastax.driver.core.utils.UUIDs;
 import com.google.common.collect.Lists;
 import org.junit.Assert;
@@ -38,8 +39,8 @@ public class CassandraWriteEntityTest {
 
         Assert.assertEquals(0, cassandraWriterRepository.count());
 
-        cassandraWriterRepository.save(getSensorMessage("type1", "value1", "deviceId1"));
-        cassandraWriterRepository.save(getSensorMessage("type2", "value2", "deviceId2"));
+        cassandraWriterRepository.save(Data.getSensorMessage("type1", "value1", "deviceId1"));
+        cassandraWriterRepository.save(Data.getSensorMessage("type2", "value2", "deviceId2"));
 
         Assert.assertEquals(2, cassandraWriterRepository.count());
 
@@ -61,16 +62,5 @@ public class CassandraWriteEntityTest {
         // to see data in db comment this 2 lines of code
 //        cassandraWriterRepository.deleteAll();
 //        Assert.assertEquals(0, cassandraWriterRepository.count());
-    }
-
-
-    private SensorDataEntity getSensorMessage(String type, String value, String deviceId) {
-        SensorDataEntity sensorDataEntity = new SensorDataEntity();
-        sensorDataEntity.setId(UUIDs.timeBased());
-        sensorDataEntity.setTimestamp(System.currentTimeMillis() + "");
-        sensorDataEntity.setType(type);
-        sensorDataEntity.setValue(value);
-        sensorDataEntity.setDeviceId(deviceId);
-        return sensorDataEntity;
     }
 }
