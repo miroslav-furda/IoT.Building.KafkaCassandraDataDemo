@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,14 +21,9 @@ public class KafkaWriterImpl implements KafkaWriter {
     @Autowired
     private KafkaSender sender;
 
+
 //    @Autowired
 //    private KafkaReceiver receiver;
-
-    @Override
-    public void send() {
-        sender.send(topic, Data.getSensorMessage("type-1", "value-1", "deviceId-1"));
-        System.out.println("sended");
-    }
 
 //    @Override
 //    public void receive() {
@@ -40,4 +36,24 @@ public class KafkaWriterImpl implements KafkaWriter {
 //            e.printStackTrace();
 //        }
 //    }
+
+    @Override
+    public void send() {
+        for (int i = 0; i < 5; i++) {
+            int seed = new Random().nextInt(1000);
+
+
+            // send message created by generated class
+
+            sender.send(topic,
+                    Data.getAvroSensorMessage(
+                            String.format("type-%d", seed),
+                            String.format("value-%d", seed),
+                            String.format("deviceId-%d", seed)
+
+                    )
+            );
+            System.out.println("sended");
+        }
+    }
 }

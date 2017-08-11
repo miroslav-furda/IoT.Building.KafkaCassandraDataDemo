@@ -1,0 +1,12 @@
+
+
+
+- max size of coap message 73 chars in string (block_size = 64) -> than more messages will be send.
+
+- block size : 16 - 1024, default :
+
+
+
+
+
+TODO: logging to file

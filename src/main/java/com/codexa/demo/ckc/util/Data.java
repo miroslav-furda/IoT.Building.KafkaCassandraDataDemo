@@ -1,5 +1,6 @@
 package com.codexa.demo.ckc.util;
 
+import com.codexa.demo.ckc.notworking.SensorDataEntityAvro;
 import com.codexa.demo.ckc.tocassandra.SensorDataEntity;
 import com.datastax.driver.core.utils.UUIDs;
 
@@ -17,5 +18,16 @@ public class Data {
         sensorDataEntity.setValue(value);
         sensorDataEntity.setDeviceId(deviceId);
         return sensorDataEntity;
+    }
+
+    public static SensorDataEntityAvro getAvroSensorMessage(String type, String value, String deviceId) {
+
+        return SensorDataEntityAvro.newBuilder()
+                .setType(type)
+                .setTimestamp(String.format("%s", System.currentTimeMillis()))
+                .setDeviceId(deviceId)
+                .setValue(value)
+                .build();
+
     }
 }

@@ -1,0 +1,10 @@
+{"namespace": "com.codexa.demo.ckc.avro",
+  "type": "record",
+  "name": "SensorDataEntityAvro",
+  "fields": [
+    {"name": "device_id", "type": "string"},
+    {"name": "timestamp",  "type": "string"},
+    {"name": "type", "type": ["string", "null"]},
+    {"name": "value", "type": ["string", "null"]}
+  ]
+}

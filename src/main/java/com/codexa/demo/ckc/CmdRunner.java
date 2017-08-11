@@ -5,7 +5,7 @@ package com.codexa.demo.ckc;
  */
 public interface CmdRunner {
 
-    void generateCoapData();
+    void writeGeneratedCoapData(Integer messageCount);
     void writeToKafka();
     void writeToCassandra();
 

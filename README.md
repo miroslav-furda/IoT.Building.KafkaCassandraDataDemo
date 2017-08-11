@@ -11,9 +11,8 @@ Application that tests performance of architecture for storing sensor data.
 ## Versions used
 - Cassandra 3.11.0 
 - Kafka 0.10.1.0
-- ...
-- Kafka Cassandra Sink Connector
-- Kafka Coap Source Connector
+- Confluent connector platform 3.1.2 (has many sink and source connectors)
+
 
 ## How to run tests.
 
@@ -33,6 +32,19 @@ $ sudo docker run --name darwin-kafka --restart always -td  -p 2181:2181 -p 9092
 ```shell
 $ sudo docker run --name darwin-coap-server --restart always -td -p 5683:5683/udp markushx/coap
 ```
+
+- **Confluent connector platform**
+```shell
+sudo docker run -td  --name confluent-connector-platform -td --restart always \
+            -p 3181:3181 -p 3040:3040 -p 7081:7081 \
+            -p 7082:7082 -p 7083:7083 -p 7092:7092 \
+            -e ZK_PORT=3181 -e WEB_PORT=3040 -e REGISTRY_PORT=8099 \
+            -e REST_PORT=7082 -e CONNECT_PORT=7083 -e BROKER_PORT=7092 \
+            -e ADV_HOST=192.168.1.137 \
+            landoop/fast-data-dev:cp3.1.2;
+```
+
+Install Cooper plugin for firefox to see server on : coap://localhost:5683/
 
 ### Check prerequisites if working
 
@@ -88,5 +100,5 @@ $ /opt/kafka_2.11-0.10.1.0/bin/kafka-topics.sh --list --zookeeper localhost:2181
 ```
 See messages
 ```shell
-$ /opt/kafka_2.11-0.10.1.0/bin/kafka-run-class.sh kafka.tools.SimpleConsumerShell --broker-list 192.168.1.137:9092 --topic boot.t --partition 0
+$ /opt/kafka_2.11-0.10.1.0/bin/kafka-run-class.sh kafka.tools.SimpleConsumerShell --broker-list 192.168.1.137:9092 --topic boot.test --partition 0
 ```

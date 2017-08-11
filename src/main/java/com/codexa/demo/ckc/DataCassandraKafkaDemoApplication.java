@@ -26,6 +26,7 @@ public class DataCassandraKafkaDemoApplication implements CommandLineRunner {
 		}
 
 		String operation = args[0].toLowerCase();
+
 		switch (operation) {
 			case "kafka" : {
 				System.out.println("kafka started ...");
@@ -39,7 +40,7 @@ public class DataCassandraKafkaDemoApplication implements CommandLineRunner {
 			}
 			case "coap" : {
 				System.out.println("coap started ...");
-				cmdRunner.generateCoapData();
+				cmdRunner.writeGeneratedCoapData(Integer.valueOf(args[1])); // NPE if null not important
 				break;
 			}
 			default : {

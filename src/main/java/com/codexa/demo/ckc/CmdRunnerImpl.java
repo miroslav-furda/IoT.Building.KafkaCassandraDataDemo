@@ -1,10 +1,12 @@
 package com.codexa.demo.ckc;
 
-import com.codexa.demo.ckc.datagenerator.CoapDataGenerator;
+import com.codexa.demo.ckc.datagenerator.coap.CoapDataSender;
 import com.codexa.demo.ckc.tocassandra.CassandraWriter;
 import com.codexa.demo.ckc.tokafka.KafkaWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.logging.Logger;
 
 /**
  * Created by peter on 26.7.2017.
@@ -12,9 +14,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class CmdRunnerImpl implements CmdRunner {
 
+    private Logger log = Logger.getLogger(this.getClass().getName());
 
     @Autowired
-    private CoapDataGenerator coapDataGenerator;
+    private CoapDataSender coapDataSender;
 
     @Autowired
     private CassandraWriter cassandraWriter;
@@ -25,8 +28,16 @@ public class CmdRunnerImpl implements CmdRunner {
 
 
     @Override
-    public void generateCoapData() {
-        System.out.println("generate coap messages");
+    public void writeGeneratedCoapData(Integer messageCount) {
+
+        int availableCpus = Runtime.getRuntime().availableProcessors();
+        log.info(String.format("Generate coap messages is going to use %d cpus/cores.", availableCpus));
+
+        for (int i = 0; i < availableCpus; i++) {
+
+            coapDataSender.sendSensorMessage(messageCount);
+        }
+        log.info("generating is over");
     }
 
     @Override
